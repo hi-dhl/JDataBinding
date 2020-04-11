@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">JDataBinding</string>
+    <string name="dialog_msg">i am AppDialog</string>
+</resources>
