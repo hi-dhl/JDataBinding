@@ -33,9 +33,9 @@ class AppDialog(
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
 
         mBinding.apply {
-            requestWindowFeature(Window.FEATURE_NO_TITLE)
             setContentView(root)
             display.text = message
             btnNo.setOnClickListener { dismiss() }
