@@ -1,6 +1,6 @@
 # JDataBinding
 
-JDataBinding是基于DataBinding封装的DataBindingActivity、DataBindingFragment、DataBindingDialog基础库相关代码，后续也会陆续完善基础库
+JDataBinding是基于DataBinding封装的DataBindingActivity、DataBindingFragment、DataBindingDialog基础库相关代码，后续也会陆续完善基础库，欢迎start<br/>
 
 DataBinding是什么？查看[Google官网](https://developer.android.com/topic/libraries/data-binding)，会有更详细的介绍<br/>
 
