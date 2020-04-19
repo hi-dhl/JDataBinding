@@ -205,8 +205,29 @@ class FragmentTest : DataBindingFragment() {
 }
 ```
 
+## 结语
 
+致力于分享一系列Android系统源码、逆向分析、算法相关的文章，每篇文章都会反复推敲，结合新的技术，带来一些新的思考，写出更通俗易懂的文章，如果你同我一样喜欢coding，一起来学习，期待与你一起成长
 
+### 系列文章
 
+#### Android 10 源码系列
 
+* [0xA01 Android 10 源码分析：Apk是如何生成的](https://juejin.im/post/5e4366c3f265da57397e1189)
+* [0xA02 Android 10 源码分析：Apk的安装流程](https://juejin.im/post/5e5a1e6a6fb9a07cb427d8cd)
+* [0xA03 Android 10 源码分析：Apk加载流程之资源加载](https://juejin.im/post/5e6c8c14f265da574b792a1a)
+* [0xA04 Android 10 源码分析：Apk加载流程之资源加载（二）](https://juejin.im/post/5e7f0f2c51882573c4676bc7)
+* [0xA05 Android 10 源码分析：Dialog加载绘制流程以及在Kotlin、DataBinding中的使用](https://juejin.im/post/5e9199db6fb9a03c7916f635)
 
+#### 工具系列
+
+* [为数不多的人知道的AndroidStudio快捷键(一)](https://juejin.im/post/5df4933e518825126e639d62)
+* [为数不多的人知道的AndroidStudio快捷键(二)](https://juejin.im/post/5df986d66fb9a016613903da)
+* [关于adb命令你所需要知道的](https://juejin.im/post/5d57cfff51882505a87a8526)
+* [如何高效获取视频截图](https://juejin.im/post/5d11d8835188251c10631ffd)
+* [10分钟入门Shell脚本编程](https://juejin.im/post/5a6378055188253dc332130a)
+
+#### 逆向系列
+
+* [基于Smali文件 Android Studio 动态调试 APP](https://juejin.im/post/5c8ce8b76fb9a049e30900bf)
+* [解决在Android Studio 3.2找不到Android Device Monitor工具](https://juejin.im/post/5c556ff7f265da2dbe02ba3c)
