@@ -205,6 +205,12 @@ class FragmentTest : DataBindingFragment() {
 }
 ```
 
+关于基于DataBinding封装的DataBindingActivity、DataBindingFragment、DataBindingDialog基础库相关代码，后续也会陆续完善基础库，点击[JDataBinding](https://github.com/hi-dhl/JDataBinding)前往查看，欢迎start<br/>
+
+## 参考
+
+[https://github.com/..BaseRecyclerViewAdapter](https://github.com/skydoves/BaseRecyclerViewAdapter)
+
 ## 结语
 
 致力于分享一系列Android系统源码、逆向分析、算法相关的文章，每篇文章都会反复推敲，结合新的技术，带来一些新的思考，写出更通俗易懂的文章，如果你同我一样喜欢coding，一起来学习，期待与你一起成长
