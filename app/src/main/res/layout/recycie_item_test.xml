@@ -2,22 +2,25 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+
+        <variable
+            name="model"
+            type="com.hi.dhl.jdatabinding.demo.ui.Model" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@android:color/black">
+        android:layout_height="@dimen/margin_50dp">
 
         <TextView
-            android:id="@+id/display"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="i am TestFragmetn"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_10dp"
+            android:text="@{model.title}"
             android:textColor="@android:color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </layout>

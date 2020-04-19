@@ -1,10 +1,10 @@
-package com.hi.dhl.jdatabinding.demo
+package com.hi.dhl.jdatabinding.demo.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.databinding.ViewDataBinding
 import com.hi.dhl.jdatabinding.DataBindingActivity
+import com.hi.dhl.jdatabinding.demo.AppDialog
+import com.hi.dhl.jdatabinding.demo.R
 import com.hi.dhl.jdatabinding.demo.databinding.ActivityMainBinding
 
 class MainActivity : DataBindingActivity() {
@@ -16,17 +16,20 @@ class MainActivity : DataBindingActivity() {
             dialog.setOnClickListener {
                 val msg = getString(R.string.dialog_msg)
                 AppDialog(
-                        context = this@MainActivity,
-                        message = msg,
-                        yes = {
-                            Toast.makeText(this@MainActivity, msg, Toast.LENGTH_SHORT).show()
-                        }).show()
+                    context = this@MainActivity,
+                    message = msg,
+                    yes = {
+                        Toast.makeText(this@MainActivity, msg, Toast.LENGTH_SHORT).show()
+                    }).show()
             }
             jumpFragment.setOnClickListener {
                 supportFragmentManager.beginTransaction()
-                        .add(R.id.container, FragmentTest(), FragmentTest::class.simpleName)
-                        .addToBackStack(FragmentTest::class.simpleName)
-                        .commitAllowingStateLoss()
+                    .add(
+                        R.id.container,
+                        FragmentTest(), FragmentTest::class.simpleName
+                    )
+                    .addToBackStack(FragmentTest::class.simpleName)
+                    .commitAllowingStateLoss()
             }
         }
 
