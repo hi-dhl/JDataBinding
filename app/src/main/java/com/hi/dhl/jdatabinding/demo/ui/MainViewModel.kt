@@ -32,9 +32,11 @@ class MainViewModel : ViewModel() {
 data class Model(val id: Int, val title: String, val time: Long) {
     companion object {
         val CALLBACK: DiffUtil.ItemCallback<Model> = object : DiffUtil.ItemCallback<Model>() {
+            // 判断两个Objects 是否代表同一个item对象， 一般使用Bean的id比较
             override fun areItemsTheSame(oldItem: Model, newItem: Model): Boolean =
                 oldItem.id == newItem.id
 
+            // 判断两个Objects 是否有相同的内容。
             override fun areContentsTheSame(oldItem: Model, newItem: Model): Boolean = true
         }
     }

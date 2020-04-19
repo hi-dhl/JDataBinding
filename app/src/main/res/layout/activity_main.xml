@@ -16,12 +16,6 @@
             android:layout_height="wrap_content"
             android:text="pop dialog" />
 
-        <Button
-            android:id="@+id/jumpFragment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_10dp"
-            android:text="jump to TestFragment" />
     </LinearLayout>
 
 </layout>

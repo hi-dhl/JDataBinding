@@ -13,9 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
  *     desc  :
  * </pre>
  */
-abstract class BaseViewHolder<T>(val view: View) : RecyclerView.ViewHolder(view),
-    View.OnClickListener,
-    View.OnLongClickListener {
+abstract class DataBindingViewHolder<T>(val view: View) : RecyclerView.ViewHolder(view) {
 
     @Throws(Exception::class)
     abstract fun bindData(data: T)

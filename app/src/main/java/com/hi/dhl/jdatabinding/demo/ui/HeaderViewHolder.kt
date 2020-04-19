@@ -2,6 +2,7 @@ package com.hi.dhl.jdatabinding.demo.ui
 
 import android.view.View
 import com.hi.dhl.jdatabinding.DataBindingViewHolder
+import com.hi.dhl.jdatabinding.demo.databinding.RecycieItemHeaderBinding
 import com.hi.dhl.jdatabinding.demo.databinding.RecycieItemTestBinding
 
 /**
@@ -11,14 +12,11 @@ import com.hi.dhl.jdatabinding.demo.databinding.RecycieItemTestBinding
  *     desc  :
  * </pre>
  */
-class TestViewHolder(view: View) : DataBindingViewHolder<Model>(view) {
+class HeaderViewHolder(view: View) : DataBindingViewHolder<Model>(view) {
 
-    val binding: RecycieItemTestBinding by viewHolderBinding(view)
+    val binding: RecycieItemHeaderBinding by viewHolderBinding(view)
 
     override fun bindData(data: Model) {
-        binding.apply {
-            model = data
-            executePendingBindings()
-        }
     }
+
 }

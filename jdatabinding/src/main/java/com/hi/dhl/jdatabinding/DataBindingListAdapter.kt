@@ -17,14 +17,14 @@ import androidx.recyclerview.widget.ListAdapter
  * </pre>
  */
 abstract class DataBindingListAdapter<T : Any> constructor(diffUtil: DiffUtil.ItemCallback<T>) :
-    ListAdapter<T, BaseViewHolder<T>>(diffUtil) {
+    ListAdapter<T, DataBindingViewHolder<T>>(diffUtil) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<T> {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataBindingViewHolder<T> {
         val view = inflateView(parent, viewType)
         return viewHolder(viewType, view)
     }
 
-    override fun onBindViewHolder(holder: BaseViewHolder<T>, position: Int) {
+    override fun onBindViewHolder(holder: DataBindingViewHolder<T>, position: Int) {
         if (position >= currentList.size) {
             return
         }
@@ -38,7 +38,7 @@ abstract class DataBindingListAdapter<T : Any> constructor(diffUtil: DiffUtil.It
         return layout(position)
     }
 
-    protected abstract fun viewHolder(@LayoutRes layout: Int, view: View): BaseViewHolder<T>
+    protected abstract fun viewHolder(@LayoutRes layout: Int, view: View): DataBindingViewHolder<T>
     protected abstract fun layout(position: Int): Int
 
     private fun inflateView(viewGroup: ViewGroup, @LayoutRes viewType: Int): View {

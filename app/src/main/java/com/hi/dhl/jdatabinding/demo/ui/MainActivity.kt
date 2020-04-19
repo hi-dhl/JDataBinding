@@ -22,17 +22,14 @@ class MainActivity : DataBindingActivity() {
                         Toast.makeText(this@MainActivity, msg, Toast.LENGTH_SHORT).show()
                     }).show()
             }
-            jumpFragment.setOnClickListener {
-                supportFragmentManager.beginTransaction()
-                    .add(
-                        R.id.container,
-                        FragmentTest(), FragmentTest::class.simpleName
-                    )
-                    .addToBackStack(FragmentTest::class.simpleName)
-                    .commitAllowingStateLoss()
-            }
-        }
 
+            supportFragmentManager.beginTransaction()
+                .add(
+                    R.id.container,
+                    FragmentTest(), FragmentTest::class.simpleName
+                )
+                .commitAllowingStateLoss()
+        }
 
     }
 }

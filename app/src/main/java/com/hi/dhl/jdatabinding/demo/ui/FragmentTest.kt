@@ -24,6 +24,7 @@ class FragmentTest : DataBindingFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         return binding<FragmentTestBinding>(
             inflater,
             R.layout.fragment_test, container
