@@ -1,6 +1,6 @@
 # JDataBinding
 
-![DataBindingDialog](http://cdn.51git.cn/2020-04-19-DataBindingDialog.png)
+[DataBindingDialog](http://cdn.51git.cn/2020-04-19-DataBindingDialog.png)
 
 JDataBinding是基于DataBinding封装的DataBindingActivity、DataBindingFragment、DataBindingDialog、DataBindingListAdapter基础库，欢迎start<br/>
 

@@ -1,9 +1,11 @@
 package com.hi.dhl.jdatabinding.demo
 
 import android.app.Application
-import com.hi.dhl.jdatabinding.demo.di.viewModule
+import com.hi.dhl.jdatabinding.demo.di.appModules
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.logger.AndroidLogger
+import org.koin.androidx.fragment.koin.fragmentFactory
+import org.koin.core.context.loadKoinModules
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 
@@ -21,7 +23,8 @@ class App : Application() {
         startKoin {
             AndroidLogger(Level.DEBUG)
             androidContext(this@App)
-            modules(viewModule)
+            fragmentFactory()
+            loadKoinModules(appModules)
         }
     }
 }

@@ -6,11 +6,13 @@ import com.hi.dhl.jdatabinding.DataBindingActivity
 import com.hi.dhl.jdatabinding.demo.AppDialog
 import com.hi.dhl.jdatabinding.demo.R
 import com.hi.dhl.jdatabinding.demo.databinding.ActivityMainBinding
+import org.koin.androidx.fragment.android.setupKoinFragmentFactory
 
 class MainActivity : DataBindingActivity() {
     private val mBinding: ActivityMainBinding by binding(R.layout.activity_main)
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setupKoinFragmentFactory()
         super.onCreate(savedInstanceState)
         mBinding.apply {
             dialog.setOnClickListener {
@@ -23,13 +25,19 @@ class MainActivity : DataBindingActivity() {
                     }).show()
             }
 
-            supportFragmentManager.beginTransaction()
-                .add(
-                    R.id.container,
-                    FragmentTest(), FragmentTest::class.simpleName
-                )
-                .commitAllowingStateLoss()
+            if (savedInstanceState == null) {
+                addFragment()
+            }
+        }
+    }
+
+    private fun addFragment() {
+        val arguments = Bundle().apply {
+            putString(FragmentTest.KEY_NAME, "来源于 MainActivity")
         }
 
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.container, FragmentTest::class.java, arguments)
+            .commit()
     }
 }

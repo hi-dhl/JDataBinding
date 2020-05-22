@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import com.hi.dhl.jdatabinding.DataBindingFragment
 import com.hi.dhl.jdatabinding.demo.R
 import com.hi.dhl.jdatabinding.demo.databinding.FragmentTestBinding
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * <pre>
@@ -16,8 +15,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  *     desc  :
  * </pre>
  */
-class FragmentTest : DataBindingFragment() {
-    val testViewModel: MainViewModel by viewModel()
+
+class FragmentTest(val mainViewModel: MainViewModel) : DataBindingFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,9 +28,13 @@ class FragmentTest : DataBindingFragment() {
             inflater,
             R.layout.fragment_test, container
         ).apply {
-            viewModel = testViewModel
+            viewModel = mainViewModel
             testAdapter = TestAdapter()
             lifecycleOwner = this@FragmentTest
         }.root
+    }
+
+    companion object{
+        const val KEY_NAME = "FragmentTest"
     }
 }
