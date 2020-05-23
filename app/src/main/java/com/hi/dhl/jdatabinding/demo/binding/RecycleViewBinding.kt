@@ -3,7 +3,7 @@ package com.hi.dhl.jdatabinding.demo.binding
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.hi.dhl.jdatabinding.demo.ui.Model
-import com.hi.dhl.jdatabinding.demo.ui.TestAdapter
+import com.hi.dhl.jdatabinding.demo.ui.adapter.TestAdapter
 
 /**
  * <pre>

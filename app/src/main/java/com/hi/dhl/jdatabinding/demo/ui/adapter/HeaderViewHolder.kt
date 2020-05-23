@@ -1,9 +1,9 @@
-package com.hi.dhl.jdatabinding.demo.ui
+package com.hi.dhl.jdatabinding.demo.ui.adapter
 
 import android.view.View
 import com.hi.dhl.jdatabinding.DataBindingViewHolder
 import com.hi.dhl.jdatabinding.demo.databinding.RecycieItemHeaderBinding
-import com.hi.dhl.jdatabinding.demo.databinding.RecycieItemTestBinding
+import com.hi.dhl.jdatabinding.demo.ui.Model
 
 /**
  * <pre>

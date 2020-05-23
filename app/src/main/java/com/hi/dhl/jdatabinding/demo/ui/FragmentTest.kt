@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import com.hi.dhl.jdatabinding.DataBindingFragment
 import com.hi.dhl.jdatabinding.demo.R
 import com.hi.dhl.jdatabinding.demo.databinding.FragmentTestBinding
+import com.hi.dhl.jdatabinding.demo.ui.adapter.TestAdapter
 
 /**
  * <pre>

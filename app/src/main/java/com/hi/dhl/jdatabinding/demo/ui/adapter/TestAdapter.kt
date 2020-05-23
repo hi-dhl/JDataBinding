@@ -1,9 +1,10 @@
-package com.hi.dhl.jdatabinding.demo.ui
+package com.hi.dhl.jdatabinding.demo.ui.adapter
 
 import android.view.View
-import com.hi.dhl.jdatabinding.DataBindingViewHolder
 import com.hi.dhl.jdatabinding.DataBindingListAdapter
+import com.hi.dhl.jdatabinding.DataBindingViewHolder
 import com.hi.dhl.jdatabinding.demo.R
+import com.hi.dhl.jdatabinding.demo.ui.Model
 
 /**
  * <pre>
@@ -12,11 +13,15 @@ import com.hi.dhl.jdatabinding.demo.R
  *     desc  :
  * </pre>
  */
-class TestAdapter : DataBindingListAdapter<Model>(Model.CALLBACK) {
+class TestAdapter : DataBindingListAdapter<Model>(
+    Model.CALLBACK
+) {
 
     override fun viewHolder(layout: Int, view: View): DataBindingViewHolder<Model> = when (layout) {
-        R.layout.recycie_item_header -> HeaderViewHolder(view)
-        else -> TestViewHolder(view)
+        R.layout.recycie_item_header -> HeaderViewHolder(
+            view
+        )
+        else -> MoreViewHolder(view)
     }
 
     override fun layout(position: Int): Int = when (position) {

@@ -1,8 +1,9 @@
-package com.hi.dhl.jdatabinding.demo.ui
+package com.hi.dhl.jdatabinding.demo.ui.adapter
 
 import android.view.View
 import com.hi.dhl.jdatabinding.DataBindingViewHolder
 import com.hi.dhl.jdatabinding.demo.databinding.RecycieItemTestBinding
+import com.hi.dhl.jdatabinding.demo.ui.Model
 
 /**
  * <pre>
@@ -11,7 +12,7 @@ import com.hi.dhl.jdatabinding.demo.databinding.RecycieItemTestBinding
  *     desc  :
  * </pre>
  */
-class TestViewHolder(view: View) : DataBindingViewHolder<Model>(view) {
+class MoreViewHolder(view: View) : DataBindingViewHolder<Model>(view) {
 
     val binding: RecycieItemTestBinding by viewHolderBinding(view)
 

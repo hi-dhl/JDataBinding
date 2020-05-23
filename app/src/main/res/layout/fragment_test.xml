@@ -10,7 +10,7 @@
 
         <variable
             name="testAdapter"
-            type="com.hi.dhl.jdatabinding.demo.ui.TestAdapter" />
+            type="com.hi.dhl.jdatabinding.demo.ui.adapter.TestAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
