@@ -11,6 +11,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/margin_20dp"
+            android:textSize="14dp"
             android:text="pop dialog" />
 
         <androidx.fragment.app.FragmentContainerView

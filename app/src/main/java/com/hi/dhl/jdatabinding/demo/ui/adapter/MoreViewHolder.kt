@@ -16,7 +16,7 @@ class MoreViewHolder(view: View) : DataBindingViewHolder<Model>(view) {
 
     val binding: RecycieItemTestBinding by viewHolderBinding(view)
 
-    override fun bindData(data: Model) {
+    override fun bindData(data: Model, position: Int) {
         binding.apply {
             model = data
             executePendingBindings()

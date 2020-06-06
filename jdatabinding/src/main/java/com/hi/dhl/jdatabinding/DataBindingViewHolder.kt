@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 abstract class DataBindingViewHolder<T>(val view: View) : RecyclerView.ViewHolder(view) {
 
     @Throws(Exception::class)
-    abstract fun bindData(data: T)
+    abstract fun bindData(data: T, position: Int)
 
     fun view() = view
 

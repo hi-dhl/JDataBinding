@@ -35,7 +35,7 @@ class FragmentTest(val mainViewModel: MainViewModel) : DataBindingFragment() {
         }.root
     }
 
-    companion object{
+    companion object {
         const val KEY_NAME = "FragmentTest"
     }
 }

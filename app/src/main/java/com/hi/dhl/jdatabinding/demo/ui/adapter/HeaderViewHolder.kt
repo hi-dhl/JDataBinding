@@ -16,7 +16,7 @@ class HeaderViewHolder(view: View) : DataBindingViewHolder<Model>(view) {
 
     val binding: RecycieItemHeaderBinding by viewHolderBinding(view)
 
-    override fun bindData(data: Model) {
+    override fun bindData(data: Model, position: Int) {
     }
 
 }

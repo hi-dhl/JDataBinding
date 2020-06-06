@@ -30,7 +30,7 @@ abstract class DataBindingListAdapter<T : Any> constructor(diffUtil: DiffUtil.It
         }
         val data = getItem(position)
         dowithTry {
-            holder.bindData(data)
+            holder.bindData(data, position)
         }
     }
 
