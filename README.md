@@ -33,7 +33,7 @@ class TestViewHolder(view: View) : BaseViewHolder<Model>(view) {
 
     val binding: RecycieItemTestBinding by viewHolderBinding(view)
 
-    override fun bindData(data: Model) {
+    override fun bindData(data: Model, position: Int) {
         binding.apply {
             model = data
             executePendingBindings()
@@ -217,27 +217,19 @@ class FragmentTest : DataBindingFragment() {
 
 ## 结语
 
-致力于分享一系列Android系统源码、逆向分析、算法相关的文章，每篇文章都会反复推敲，结合新的技术，带来一些新的思考，写出更通俗易懂的文章，如果你同我一样喜欢coding，一起来学习，期待与你一起成长
+致力于分享一系列 Android 系统源码、逆向分析、算法、翻译、Jetpack  源码相关的文章，如果你同我一样喜欢研究 Android 源码和算法，可以看一下我另外两个库 [Leetcode-Solutions-with-Java-And-Kotlin](https://github.com/hi-dhl/Leetcode-Solutions-with-Java-And-Kotlin) 和 [Android10-Source-Analysis](https://github.com/hi-dhl/Android10-Source-Analysis)
 
-### 系列文章
+### Leetcode-Solutions-with-Java-And-Kotlin
 
-#### Android 10 源码系列
+由于 LeetCode 的题库庞大，每个分类都能筛选出数百道题，由于每个人的精力有限，不可能刷完所有题目，因此我按照经典类型题目去分类、和题目的难易程度去排序
 
-* [0xA01 Android 10 源码分析：Apk是如何生成的](https://juejin.im/post/5e4366c3f265da57397e1189)
-* [0xA02 Android 10 源码分析：Apk的安装流程](https://juejin.im/post/5e5a1e6a6fb9a07cb427d8cd)
-* [0xA03 Android 10 源码分析：Apk加载流程之资源加载](https://juejin.im/post/5e6c8c14f265da574b792a1a)
-* [0xA04 Android 10 源码分析：Apk加载流程之资源加载（二）](https://juejin.im/post/5e7f0f2c51882573c4676bc7)
-* [0xA05 Android 10 源码分析：Dialog加载绘制流程以及在Kotlin、DataBinding中的使用](https://juejin.im/post/5e9199db6fb9a03c7916f635)
+* 数据结构： 数组、栈、队列、字符串、链表、树……
+* 算法： 查找算法、搜索算法、位运算、排序、数学、……
 
-#### 工具系列
+每道题目都会用 Java 和 kotlin 去实现，并且每道题目都有解题思路，如果你同我一样喜欢算法、LeetCode，可以关注我 GitHub 上的 LeetCode 题解：[Leetcode-Solutions-with-Java-And-Kotlin](https://github.com/hi-dhl/Leetcode-Solutions-with-Java-And-Kotlin)，一起来学习，期待与你一起成长
 
-* [为数不多的人知道的AndroidStudio快捷键(一)](https://juejin.im/post/5df4933e518825126e639d62)
-* [为数不多的人知道的AndroidStudio快捷键(二)](https://juejin.im/post/5df986d66fb9a016613903da)
-* [关于adb命令你所需要知道的](https://juejin.im/post/5d57cfff51882505a87a8526)
-* [如何高效获取视频截图](https://juejin.im/post/5d11d8835188251c10631ffd)
-* [10分钟入门Shell脚本编程](https://juejin.im/post/5a6378055188253dc332130a)
+### Android10-Source-Analysis
 
-#### 逆向系列
+正在写一系列的 Android 10 源码分析的文章，了解系统源码，不仅有助于分析问题，在面试过程中，对我们也是非常有帮助的，如果你同我一样喜欢研究 Android 源码，可以关注我 GitHub 上的 [Android10-Source-Analysis](https://github.com/hi-dhl/Android10-Source-Analysis)，文章都会同步到这个仓库
 
-* [基于Smali文件 Android Studio 动态调试 APP](https://juejin.im/post/5c8ce8b76fb9a049e30900bf)
-* [解决在Android Studio 3.2找不到Android Device Monitor工具](https://juejin.im/post/5c556ff7f265da2dbe02ba3c)
+
