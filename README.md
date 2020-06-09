@@ -1,14 +1,40 @@
-# JDataBinding
+# <p align="center"> JDataBinding</p>
 
-[DataBindingDialog](http://cdn.51git.cn/2020-04-19-DataBindingDialog.png)
+<p align="center">
+JDataBinding 是基于 DataBinding 封装的 DataBindingActivity、DataBindingAppCompatActivity、DataBindingFragmentActivity、DataBindingFragment、DataBindingDialog、DataBindingListAdapter、DataBindingViewHolder 基础库，欢迎 start<br/>
+</p>
 
-JDataBinding是基于DataBinding封装的DataBindingActivity、DataBindingFragment、DataBindingDialog、DataBindingListAdapter基础库，欢迎start<br/>
+<p align="center">
+
+<a href="https://github.com/hi-dhl"><img src="https://img.shields.io/badge/GitHub-HiDhl-4BC51D.svg?style=flat"></a>
+
+<a href="https://opensource.org/licenses/Apache-2.0"><img src="https://img.shields.io/badge/license-Apache2.0-blue.svg?style=flat"></a>
+
+<img src="https://img.shields.io/badge/language-kotlin-orange.svg"/>
+
+<img src="https://img.shields.io/badge/platform-android-lightgrey.svg"/>
+</p>
+
+![DataBindingDialog](http://cdn.51git.cn/2020-04-19-DataBindingDialog.png) 
 
 DataBinding是什么？查看[Google官网](https://developer.android.com/topic/libraries/data-binding)，会有更详细的介绍<br/>
 
 > DataBinding 是 Google 在 Jetpack 中推出的一款数据绑定的支持库，利用该库可以实现在页面组件中直接绑定应用程序的数据源
 
 利用Kotlin的inline、reified、DSL等等语法, 结合着 DataBinding，可以设计出更加简洁并利于维护的代码
+
+
+## Download
+
+**Gradle**
+
+将下列代码添加进模块 build.gradle 文件内
+
+```
+dependencies {
+    implementation 'com.hi-dhl:jdatabinding:1.0.0'
+}
+```
 
 ## DataBindingListAdapter
 
@@ -23,6 +49,8 @@ ListAdapter是 Google 推出的一个新的类库，相比传统的Adapter，它
 DiffUtil 主要在后台计算list是否相同，然后回到回主线程刷新数据，主要用了Myers Diff Algorithm, 而我们日常使用的git diff就用到了该算法
 
 好了介绍完基础概念之后，来看一下DataBindingListAdapter是如何使用的，为什么我会说使用更少的代码快速实现 RecyclerView adapter and ViewHolder
+
+### 如何使用 DataBindingListAdapter
 
 **Step1: 继承BaseViewHolder**
 
@@ -111,6 +139,8 @@ val CALLBACK: DiffUtil.ItemCallback<Model> = object : DiffUtil.ItemCallback<Mode
 
 幸运的是，Kotlin是一门拥有具名可选参数的变成语言，**DataBindingDialog** 在使用Kotlin的具名可选参数构造类实现Dailog构建者模式的基础上，用DataBinding进行二次封装，加上DataBinding数据绑定的特性，使Dialog变得更加简洁、易用<br/>
 
+### 如何使用 DataBindingDialog
+
 **Step1: 继承DataBindingDialog**
 
 ```
@@ -156,6 +186,8 @@ AppDialog(
 
 Kotlin中的函数和构造器都支持具名可选参数，在使用上更加灵活，在 **DataBindingActivity** 中使用Kotlin的inline、reified强大的特性，将类型参数实化，初始化View更加简洁
 
+### 如何使用 DataBindingActivity
+
 **继承DataBindingActivity**
 
 ```
@@ -182,6 +214,8 @@ class MainActivity : DataBindingActivity() {
 ## DataBindingFragment
 
 在Fragment当中如何使用 Kotlin的inline、reified初始化View，可以查看**DataBindingFragment**
+
+### 如何使用 DataBindingFragment
 
 **继承自DataBindingFragment**
 
@@ -231,5 +265,23 @@ class FragmentTest : DataBindingFragment() {
 ### Android10-Source-Analysis
 
 正在写一系列的 Android 10 源码分析的文章，了解系统源码，不仅有助于分析问题，在面试过程中，对我们也是非常有帮助的，如果你同我一样喜欢研究 Android 源码，可以关注我 GitHub 上的 [Android10-Source-Analysis](https://github.com/hi-dhl/Android10-Source-Analysis)，文章都会同步到这个仓库
+
+## License
+
+```
+Copyright 2020 hi-dhl (Jack Deng)
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```
 
 
