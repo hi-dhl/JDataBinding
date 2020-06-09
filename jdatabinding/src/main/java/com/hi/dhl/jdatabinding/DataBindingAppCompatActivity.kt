@@ -13,7 +13,7 @@ import androidx.fragment.app.FragmentActivity
  *     desc  :
  * </pre>
  */
-abstract class DataBindingAppCommentActivity : AppCompatActivity() {
+abstract class DataBindingAppCompatActivity : AppCompatActivity() {
 
     protected inline fun <reified T : ViewDataBinding> binding(
         @LayoutRes resId: Int
