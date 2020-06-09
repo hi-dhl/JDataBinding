@@ -1,4 +1,4 @@
-# <p align="center"> JDataBinding</p>
+# <p align="center"> JDataBinding </p>
 
 <p align="center">
 JDataBinding 是基于 DataBinding 封装的 DataBindingActivity、DataBindingAppCompatActivity、DataBindingFragmentActivity、DataBindingFragment、DataBindingDialog、DataBindingListAdapter、DataBindingViewHolder 基础库，欢迎 start<br/>
@@ -10,12 +10,7 @@ JDataBinding 是基于 DataBinding 封装的 DataBindingActivity、DataBindingAp
 
 ![DataBindingDialog](http://cdn.51git.cn/2020-04-19-DataBindingDialog.png) 
 
-DataBinding是什么？查看[Google官网](https://developer.android.com/topic/libraries/data-binding)，会有更详细的介绍<br/>
-
-> DataBinding 是 Google 在 Jetpack 中推出的一款数据绑定的支持库，利用该库可以实现在页面组件中直接绑定应用程序的数据源
-
-利用Kotlin的inline、reified、DSL等等语法, 结合着 DataBinding，可以设计出更加简洁并利于维护的代码
-
+关于 JDataBinding 的解析可以查看我在掘金上的文章 [如何在项目中封装 Kotlin + Android Databinding](https://juejin.im/post/5e9c434a51882573663f6cc6)
 
 ## Download
 
@@ -25,29 +20,17 @@ DataBinding是什么？查看[Google官网](https://developer.android.com/topic/
 
 ```
 dependencies {
-    implementation 'com.hi-dhl:jdatabinding:1.0.0'
+    implementation 'com.hi-dhl:jdatabinding:1.0.1'
 }
 ```
 
-## DataBindingListAdapter
-
-DataBindingListAdapter 是基于ListAdapter封装的，使用更少的代码快速实现 RecyclerView adapter and ViewHolder
-
-**什么是ListAdapter？**
-
-ListAdapter是 Google 推出的一个新的类库，相比传统的Adapter，它能够用较少的代码实现更多的RecylerView的动画，并且可以自动存储之前的list，ListAdapter还加入了DiffUtil的工具类，只有当items变化的时候进行刷新，而不用刷新整个list，大大提高RecyclerView的性能
-
-**什么是DiffUtil？**
-
-DiffUtil 主要在后台计算list是否相同，然后回到回主线程刷新数据，主要用了Myers Diff Algorithm, 而我们日常使用的git diff就用到了该算法
-
-好了介绍完基础概念之后，来看一下DataBindingListAdapter是如何使用的，为什么我会说使用更少的代码快速实现 RecyclerView adapter and ViewHolder
+## Usage
 
 ### 如何使用 DataBindingListAdapter
 
 **Step1: 继承BaseViewHolder**
 
-创建一个自定义的ViewHolder类，继承DataBindingListAdapter，通过viewHolderBinding可以快速实现DataBinding的绑定
+创建一个自定义的 ViewHolder 类，继承 DataBindingListAdapter，通过 viewHolderBinding 可以快速实现 DataBinding 的绑定
 
 ```
 class TestViewHolder(view: View) : BaseViewHolder<Model>(view) {
@@ -64,9 +47,9 @@ class TestViewHolder(view: View) : BaseViewHolder<Model>(view) {
 }
 ```
 
-**Step2: 继承DataBindingListAdapter**
+**Step2: 继承 DataBindingListAdapter**
 
-实现带头部和尾部的Adapter，创建自定义的Adapter，继承DataBindingListAdapter
+实现带头部和尾部的 Adapter，创建自定义的 Adapter，继承 DataBindingListAdapter
 
 ```
 class TestAdapter : DataBindingListAdapter<Model>(Model.CALLBACK) {
@@ -86,7 +69,7 @@ class TestAdapter : DataBindingListAdapter<Model>(Model.CALLBACK) {
 }
 ```
 
-构造方法传入了Model.CALLBACK，Model.CALLBACK实现了DiffUtil.ItemCallback，用于计算list的两个非空item的不同。具体要写两个抽象方法areItemsTheSame 和 areContentsTheSame
+构造方法传入了 Model.CALLBACK，Model.CALLBACK 实现了 DiffUtil.ItemCallback，用于计算 list 的两个非空 item 的不同。具体要写两个抽象方法 areItemsTheSame 和 areContentsTheSame
 
 ```
 val CALLBACK: DiffUtil.ItemCallback<Model> = object : DiffUtil.ItemCallback<Model>() {
@@ -99,7 +82,7 @@ val CALLBACK: DiffUtil.ItemCallback<Model> = object : DiffUtil.ItemCallback<Mode
         }
 ```
 
-**Step3: 绑定RecyclerView和Adapter**
+**Step3: 绑定 RecyclerView 和 Adapter**
 
 ```
 <data>
@@ -122,19 +105,11 @@ val CALLBACK: DiffUtil.ItemCallback<Model> = object : DiffUtil.ItemCallback<Mode
 
 ```
 
-这里用到了DataBinding的自定义数据绑定部分，可以百度、Google具体的用法，具体实现可以参考demo下面fragment_test.xml文件
-
-## DataBindingDialog
-
-在Kotlin中应该尽量避免使用构建者模式，使用Kotlin的具名可选参数构造类，实现构建者模式，代码更加简洁<br/>
-
-> 在 "Effective Java" 书中介绍构建者模式时，是这样子描述它的：本质上builder模式模拟了具名的可算参数，就像Ada和Python中的一样
-
-幸运的是，Kotlin是一门拥有具名可选参数的变成语言，**DataBindingDialog** 在使用Kotlin的具名可选参数构造类实现Dailog构建者模式的基础上，用DataBinding进行二次封装，加上DataBinding数据绑定的特性，使Dialog变得更加简洁、易用<br/>
+这里用到了 DataBinding 的自定义数据绑定部分，可以百度、Google具体的用法，具体实现可以参考 demo 下面 fragment_test.xml 文件
 
 ### 如何使用 DataBindingDialog
 
-**Step1: 继承DataBindingDialog**
+**Step1: 继承 DataBindingDialog**
 
 ```
 class AppDialog(
@@ -175,13 +150,9 @@ AppDialog(
         }).show()
 ```
 
-## DataBindingActivity
-
-Kotlin中的函数和构造器都支持具名可选参数，在使用上更加灵活，在 **DataBindingActivity** 中使用Kotlin的inline、reified强大的特性，将类型参数实化，初始化View更加简洁
-
 ### 如何使用 DataBindingActivity
 
-**继承DataBindingActivity**
+**继承 DataBindingActivity**
 
 ```
 class MainActivity : DataBindingActivity() {
@@ -204,13 +175,11 @@ class MainActivity : DataBindingActivity() {
 }
 ```
 
-## DataBindingFragment
-
-在Fragment当中如何使用 Kotlin的inline、reified初始化View，可以查看**DataBindingFragment**
+关于 DataBindingAppCompatActivity、DataBindingFragmentActivity 等等用法同 DataBindingActivity，这里就不展示了
 
 ### 如何使用 DataBindingFragment
 
-**继承自DataBindingFragment**
+**继承自 DataBindingFragment**
 
 ```
 class FragmentTest : DataBindingFragment() {
@@ -233,10 +202,6 @@ class FragmentTest : DataBindingFragment() {
     }
 }
 ```
-
-关于基于DataBinding封装的DataBindingActivity、DataBindingFragment、DataBindingDialog、DataBindingListAdapter基础库，点击[JDataBinding](https://github.com/hi-dhl/JDataBinding)前往查看，欢迎start<br/>
-
-[JDataBinding源码地址：https://github.com/hi-dhl/JDataBinding](https://github.com/hi-dhl/JDataBinding)
 
 ## 参考
 
