@@ -13,15 +13,11 @@ import com.hi.dhl.jdatabinding.demo.ui.Model
  *     desc  :
  * </pre>
  */
-class TestAdapter : DataBindingListAdapter<Model>(
-    Model.CALLBACK
-) {
+class TestAdapter : DataBindingListAdapter<Model>(Model.CALLBACK) {
 
     override fun viewHolder(layout: Int, view: View): DataBindingViewHolder<Model> = when (layout) {
-        R.layout.recycie_item_header -> HeaderViewHolder(
-            view
-        )
-        else -> MoreViewHolder(view)
+        R.layout.recycie_item_header -> HeaderViewHolder(view)
+        else -> TestViewHolder(view)
     }
 
     override fun layout(position: Int): Int = when (position) {

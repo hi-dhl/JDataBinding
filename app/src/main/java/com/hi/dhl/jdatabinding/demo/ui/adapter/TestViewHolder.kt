@@ -12,7 +12,7 @@ import com.hi.dhl.jdatabinding.demo.ui.Model
  *     desc  :
  * </pre>
  */
-class MoreViewHolder(view: View) : DataBindingViewHolder<Model>(view) {
+class TestViewHolder(view: View) : DataBindingViewHolder<Model>(view) {
 
     val binding: RecycieItemTestBinding by viewHolderBinding(view)
 
