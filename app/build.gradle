@@ -1,18 +1,21 @@
+import com.hi.dhl.Config
+import com.hi.dhl.Deps
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    compileSdkVersion Config.compileSdkVersion
+    buildToolsVersion Config.buildToolsVersion
 
     defaultConfig {
         applicationId "com.hi.dhl.jdatabinding.demo"
-        minSdkVersion 24
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion Config.minSdkVersion
+        targetSdkVersion Config.targetSdkVersion
+        versionCode Config.versionCode
+        versionName Config.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -30,26 +33,23 @@ android {
 }
 
 dependencies {
-    def koin_version = '2.1.5'
-    def lifecycle_version = "2.2.0"
-
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation Deps.kotlinStdlibJdk7
 
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.3.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation Deps.appcompat
+    implementation Deps.ktsCode
+    implementation Deps.constraintlayout
 
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation Deps.Lifecycle.ktsViewmodel
+    implementation Deps.recyclerview
 
-    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
-    implementation "org.koin:koin-androidx-fragment:$koin_version"
+    implementation Deps.Koin.viewModel
+    implementation Deps.Koin.fragment
 
 //    implementation 'com.hi-dhl:jdatabinding:1.0.1'
     implementation project(':jdatabinding')
 
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    testImplementation Deps.junit
+    androidTestImplementation Deps.junitExt
+    androidTestImplementation Deps.espressoCore
 }
