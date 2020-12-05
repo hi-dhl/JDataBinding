@@ -231,7 +231,7 @@ class FragmentTest : DataBindingFragment() {
 
 ## 参考
 
-[https://github.com/..BaseRecyclerViewAdapter](https://github.com/skydoves/BaseRecyclerViewAdapter)
+[https://github.com/skydoves/BaseRecyclerViewAdapter](https://github.com/skydoves/BaseRecyclerViewAdapter)
 
 
 ```
