@@ -208,7 +208,7 @@ class FragmentTest : DataBindingFragment() {
 * 个人微信：hi-dhl
 * 公众号：ByteCode，包含 Jetpack ，Kotlin ，Android 10 系列源码，译文，LeetCode / 剑指 Offer / 多线程 / 国内外大厂算法题 等等一系列文章
 
-<img src='http://cdn.51git.cn/2020-10-20-151047.png' width = 400px/>
+<img src='http://cdn.51git.cn/2020-10-20-151047.png' width = 350px/>
 
 ---
 
@@ -234,22 +234,10 @@ class FragmentTest : DataBindingFragment() {
 [https://github.com/..BaseRecyclerViewAdapter](https://github.com/skydoves/BaseRecyclerViewAdapter)
 
 
-## License
-
 ```
-Copyright 2020 hi-dhl (Jack Deng)
+请参看 BaseRecyclerViewAdapter 相关协议。
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-   http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+项目最初部分内容参考 BaseRecyclerViewAdapter，从 BaseRecyclerViewAdapter 扩展而来
 ```
 
 
