@@ -26,6 +26,49 @@ dependencies {
 
 ## Usage
 
+### 如何使用 DataBindingDialog
+
+**Step1: 继承 DataBindingDialog**
+
+```
+class AppDialog(
+    context: Context,
+    val title: String? = null,
+    val message: String? = null,
+    val yes: AppDialog.() -> Unit
+) : DataBindingDialog(context, R.style.AppDialog) {
+    private val mBinding: DialogAppBinding by binding(R.layout.dialog_app)
+
+    init {
+        requireNotNull(message) { "message must be not null" }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
+
+        mBinding.apply {
+            setContentView(root)
+            display.text = message
+            btnNo.setOnClickListener { dismiss() }
+            btnYes.setOnClickListener { yes() }
+        }
+
+    }
+}
+```
+
+**Step2: 简洁的调用方式**
+
+```
+AppDialog(
+        context = this@MainActivity,
+        message = msg,
+        yes = {
+            // do something
+        }).show()
+```
+
 ### 如何使用 DataBindingListAdapter
 
 **Step1: 继承BaseViewHolder**
@@ -107,48 +150,6 @@ val CALLBACK: DiffUtil.ItemCallback<Model> = object : DiffUtil.ItemCallback<Mode
 
 这里用到了 DataBinding 的自定义数据绑定部分，可以百度、Google具体的用法，具体实现可以参考 demo 下面 fragment_test.xml 文件
 
-### 如何使用 DataBindingDialog
-
-**Step1: 继承 DataBindingDialog**
-
-```
-class AppDialog(
-    context: Context,
-    val title: String? = null,
-    val message: String? = null,
-    val yes: AppDialog.() -> Unit
-) : DataBindingDialog(context, R.style.AppDialog) {
-    private val mBinding: DialogAppBinding by binding(R.layout.dialog_app)
-
-    init {
-        requireNotNull(message) { "message must be not null" }
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        requestWindowFeature(Window.FEATURE_NO_TITLE)
-
-        mBinding.apply {
-            setContentView(root)
-            display.text = message
-            btnNo.setOnClickListener { dismiss() }
-            btnYes.setOnClickListener { yes() }
-        }
-
-    }
-}
-```
-
-**Step2: 简洁的调用方式**
-
-```
-AppDialog(
-        context = this@MainActivity,
-        message = msg,
-        yes = {
-            // do something
-        }).show()
-```
 
 ### 如何使用 DataBindingActivity
 
