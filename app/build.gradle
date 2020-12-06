@@ -51,7 +51,7 @@ dependencies {
     if (debug) {
         implementation project(':jdatabinding')
     } else {
-        implementation 'com.hi-dhl:jdatabinding:1.0.2'
+        implementation 'com.hi-dhl:jdatabinding:1.0.3'
     }
 
 

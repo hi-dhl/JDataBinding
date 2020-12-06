@@ -1,15 +1,17 @@
 package com.hi.dhl.jdatabinding.demo.ui
 
+import android.app.Activity
 import android.os.Bundle
 import android.widget.Toast
-import com.hi.dhl.jdatabinding.DataBindingFragmentActivity
+import androidx.fragment.app.FragmentActivity
+import com.hi.dhl.jdatabinding.binding
 import com.hi.dhl.jdatabinding.demo.AppDialog
 import com.hi.dhl.jdatabinding.demo.R
 import com.hi.dhl.jdatabinding.demo.databinding.ActivityMainBinding
 import org.koin.androidx.fragment.android.setupKoinFragmentFactory
 
-class MainActivity : DataBindingFragmentActivity() {
-    private val mBinding: ActivityMainBinding by binding(R.layout.activity_main)
+class MainActivity : FragmentActivity() {
+    private val mBinding: ActivityMainBinding by binding()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setupKoinFragmentFactory()
