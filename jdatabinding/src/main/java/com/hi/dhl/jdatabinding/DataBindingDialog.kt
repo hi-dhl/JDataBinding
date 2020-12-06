@@ -21,10 +21,10 @@ abstract class DataBindingDialog(@NonNull context: Context, @StyleRes themeResId
     Dialog(context, themeResId) {
 
     protected inline fun <reified T : ViewDataBinding> binding(@LayoutRes resId: Int): Lazy<T> =
-        lazy {
+        lazy(LazyThreadSafetyMode.NONE) {
             requireNotNull(
                 DataBindingUtil.bind<T>(LayoutInflater.from(context).inflate(resId, null))
-            ) { "cannot find the matched view to layout." }
+            ) { "cannot find the layout file" }
         }
 
 }
