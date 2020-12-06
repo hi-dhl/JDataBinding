@@ -1,6 +1,7 @@
 package com.hi.dhl.jdatabinding
 
 import android.app.Activity
+import android.view.LayoutInflater
 import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
@@ -17,6 +18,10 @@ abstract class DataBindingActivity : Activity() {
 
     protected inline fun <reified T : ViewDataBinding> binding(
         @LayoutRes resId: Int
-    ): Lazy<T> = lazy(LazyThreadSafetyMode.NONE) { DataBindingUtil.setContentView<T>(this, resId) }
+    ): Lazy<T> = lazy(LazyThreadSafetyMode.NONE) {
+        requireNotNull(
+            DataBindingUtil.setContentView<T>(this, resId)
+        ) { "cannot find the layout file" }
+    }
 
 }

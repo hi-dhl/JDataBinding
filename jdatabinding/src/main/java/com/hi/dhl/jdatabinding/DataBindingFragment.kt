@@ -29,6 +29,8 @@ abstract class DataBindingFragment : Fragment() {
         inflater: LayoutInflater,
         @LayoutRes resId: Int,
         container: ViewGroup?
-    ): T = DataBindingUtil.inflate(inflater, resId, container, false)
+    ): T = requireNotNull(DataBindingUtil.inflate(inflater, resId, container, false)) {
+        "cannot find the layout file"
+    }
 
 }

@@ -17,6 +17,11 @@ abstract class DataBindingAppCompatActivity : AppCompatActivity() {
 
     protected inline fun <reified T : ViewDataBinding> binding(
         @LayoutRes resId: Int
-    ): Lazy<T> = lazy(LazyThreadSafetyMode.NONE) { DataBindingUtil.setContentView<T>(this, resId) }
+    ): Lazy<T> = lazy(LazyThreadSafetyMode.NONE) {
+        requireNotNull(
+            DataBindingUtil.setContentView<T>(this, resId)
+        ) { "cannot find the layout file" }
+
+    }
 
 }
