@@ -20,7 +20,7 @@ JDataBinding 是基于 DataBinding 封装的 DataBindingActivity、DataBindingAp
 
 ```
 dependencies {
-    implementation 'com.hi-dhl:jdatabinding:1.0.2'
+    implementation 'com.hi-dhl:jdatabinding:1.0.4'
 }
 ```
 
@@ -67,6 +67,89 @@ AppDialog(
         yes = {
             // do something
         }).show()
+```
+
+### 如何使用 DataBindingActivity
+
+* jdatabinding >= 1.0.4 的用法
+
+```
+class MainActivity : FragmentActivity() {
+    private val mBinding: ActivityMainBinding by binding()
+}
+
+class MainActivity : AppCompatActivity() {
+    private val mBinding: ActivityMainBinding by binding()
+}
+
+class MainActivity : Activity() {
+    private val mBinding: ActivityMainBinding by binding()
+}
+```
+
+* jdatabinding <= 1.0.3 的用法
+
+
+```
+
+class MainActivity : DataBindingAppCompatActivity() {
+    private val mBinding: ActivityMainBinding by binding(R.layout.activity_main)
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        mBinding.apply {}
+    }
+}
+
+class MainActivity : DataBindingActivity() {
+    private val mBinding: ActivityMainBinding by binding(R.layout.activity_main)
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        mBinding.apply {}
+    }
+}
+
+class MainActivity : DataBindingFragmentActivity() {
+    private val mBinding: ActivityMainBinding by binding(R.layout.activity_main)
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        mBinding.apply {}
+    }
+}
+```
+
+### 如何使用 DataBindingFragment
+
+* jdatabinding >= 1.0.4 的用法
+
+```
+class FragmentTest(val mainViewModel: MainViewModel) : DataBindingFragment(R.layout.fragment_test) {
+
+    val bind: FragmentTestBinding by binding()
+}
+```
+
+* jdatabinding <= 1.0.3 的用法
+
+```
+class FragmentTest : DataBindingFragment() {
+    val testViewModel: MainViewModel by viewModel()
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+
+        return binding<FragmentTestBinding>(
+            inflater,
+            R.layout.fragment_test, container
+        ).apply {
+        }.root
+    }
+}
 ```
 
 ### 如何使用 DataBindingListAdapter
@@ -151,58 +234,7 @@ val CALLBACK: DiffUtil.ItemCallback<Model> = object : DiffUtil.ItemCallback<Mode
 这里用到了 DataBinding 的自定义数据绑定部分，可以百度、Google具体的用法，具体实现可以参考 demo 下面 fragment_test.xml 文件
 
 
-### 如何使用 DataBindingActivity
 
-**继承 DataBindingActivity**
-
-```
-class MainActivity : DataBindingActivity() {
-    private val mBinding: ActivityMainBinding by binding(R.layout.activity_main)
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        mBinding.apply {
-            dialog.setOnClickListener {
-                val msg = getString(R.string.dialog_msg)
-                AppDialog(
-                        context = this@MainActivity,
-                        message = msg,
-                        yes = {
-                            Toast.makeText(this@MainActivity, msg, Toast.LENGTH_SHORT).show()
-                        }).show()
-            }
-        }
-    }
-}
-```
-
-关于 DataBindingAppCompatActivity、DataBindingFragmentActivity 等等用法同 DataBindingActivity，这里就不展示了
-
-### 如何使用 DataBindingFragment
-
-**继承自 DataBindingFragment**
-
-```
-class FragmentTest : DataBindingFragment() {
-    val testViewModel: MainViewModel by viewModel()
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-
-        return binding<FragmentTestBinding>(
-            inflater,
-            R.layout.fragment_test, container
-        ).apply {
-            viewModel = testViewModel
-            testAdapter = TestAdapter()
-            lifecycleOwner = this@FragmentTest
-        }.root
-    }
-}
-```
 
 ### 联系我
 
@@ -230,15 +262,18 @@ class FragmentTest : DataBindingFragment() {
 
 * 「为互联网人而设计，国内国外名站导航」涵括新闻、体育、生活、娱乐、设计、产品、运营、前端开发、Android 开发等等网址，欢迎前去查看 [为互联网人而设计导航网站](https://site.51git.cn)
 
-## 参考
+## 感谢
 
 [https://github.com/skydoves/BaseRecyclerViewAdapter](https://github.com/skydoves/BaseRecyclerViewAdapter)
 
 
-```
 请参看 BaseRecyclerViewAdapter 相关协议。
 
-项目最初部分内容参考 BaseRecyclerViewAdapter，从 BaseRecyclerViewAdapter 扩展而来
-```
+项目最初部分内容参考 BaseRecyclerViewAdapter，从 BaseRecyclerViewAdapter 扩展而来，
+
+同时也要感谢这篇文章 [Simple one-liner ViewBinding in Fragments and Activities with Kotlin](https://medium.com/@Zhuinden/simple-one-liner-viewbinding-in-fragments-and-activities-with-kotlin-961430c6c07c) 
+和 [ViewBindingDelegate](https://github.com/hoc081098/ViewBindingDelegate) 开源库提供了思路
+
+欢迎大家前去查看，思路非常的好
 
 
