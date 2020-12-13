@@ -1,7 +1,7 @@
 # <p align="center"> JDataBinding </p>
 
 <p align="center">
-JDataBinding 是基于 DataBinding 封装的 DataBindingActivity、DataBindingAppCompatActivity、DataBindingFragmentActivity、DataBindingFragment、DataBindingDialog、DataBindingListAdapter、DataBindingViewHolder 基础库，欢迎 start<br/>
+JDataBinding 是基于 DataBinding 封装的基础库，欢迎 star<br/>
 </p>
 
 <p align="center">
@@ -11,6 +11,8 @@ JDataBinding 是基于 DataBinding 封装的 DataBindingActivity、DataBindingAp
 ![DataBindingDialog](http://cdn.51git.cn/2020-04-19-DataBindingDialog.png) 
 
 关于 JDataBinding 的解析可以查看我在掘金上的文章 [如何在项目中封装 Kotlin + Android Databinding](https://juejin.im/post/5e9c434a51882573663f6cc6)
+
+JDataBinding 是基于 DataBinding 封装的 基础库，可以在  `Activity` 、`AppCompatActivity` 、`FragmentActivity` 、`Fragment` 、 `Dialog` 、 `Adapter` 中直接使用
 
 ## Download
 
@@ -27,8 +29,6 @@ dependencies {
 ## Usage
 
 ### 如何使用  Dialog 中如何使用
-
-
 
 ```
 class AppDialog(
