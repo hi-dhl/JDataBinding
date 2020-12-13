@@ -34,7 +34,8 @@ android {
 
 
 dependencies {
-    ext.debug = true;
+    ext.remote = false
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation Deps.kotlinStdlibJdk7
 
@@ -48,10 +49,10 @@ dependencies {
     implementation Deps.Koin.viewModel
     implementation Deps.Koin.fragment
 
-    if (debug) {
-        implementation project(':jdatabinding')
+    if (remote) {
+        implementation 'com.hi-dhl:jdatabinding:1.0.5'
     } else {
-        implementation 'com.hi-dhl:jdatabinding:1.0.4'
+        implementation project(':jdatabinding')
     }
 
 

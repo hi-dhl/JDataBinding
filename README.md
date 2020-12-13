@@ -20,15 +20,15 @@ JDataBinding 是基于 DataBinding 封装的 DataBindingActivity、DataBindingAp
 
 ```
 dependencies {
-    implementation 'com.hi-dhl:jdatabinding:1.0.4'
+    implementation 'com.hi-dhl:jdatabinding:1.0.5'
 }
 ```
 
 ## Usage
 
-### 如何使用 DataBindingDialog
+### 如何使用  Dialog 中如何使用
 
-**Step1: 继承 DataBindingDialog**
+
 
 ```
 class AppDialog(
@@ -36,8 +36,8 @@ class AppDialog(
     val title: String? = null,
     val message: String? = null,
     val yes: AppDialog.() -> Unit
-) : DataBindingDialog(context, R.style.AppDialog) {
-    private val mBinding: DialogAppBinding by binding(R.layout.dialog_app)
+) : Dialog(context, R.style.AppDialog) {
+    private val mBinding: DialogAppBinding by binding()
 
     init {
         requireNotNull(message) { "message must be not null" }
@@ -48,7 +48,6 @@ class AppDialog(
         requestWindowFeature(Window.FEATURE_NO_TITLE)
 
         mBinding.apply {
-            setContentView(root)
             display.text = message
             btnNo.setOnClickListener { dismiss() }
             btnYes.setOnClickListener { yes() }
@@ -122,10 +121,10 @@ class MainActivity : DataBindingFragmentActivity() {
 
 ### 如何使用 DataBindingFragment
 
-* jdatabinding >= 1.0.4 的用法
+* jdatabinding >= 1.0.5 的用法
 
 ```
-class FragmentTest(val mainViewModel: MainViewModel) : DataBindingFragment(R.layout.fragment_test) {
+class FragmentTest(val mainViewModel: MainViewModel) : Fragment(R.layout.fragment_test) {
 
     val bind: FragmentTestBinding by binding()
 }

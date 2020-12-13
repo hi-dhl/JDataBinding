@@ -1,13 +1,11 @@
 package com.hi.dhl.jdatabinding
 
 import android.app.Activity
-import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleEventObserver
-import androidx.lifecycle.LifecycleOwner
 import androidx.viewbinding.ViewBinding
+import com.hi.dhl.jdatabinding.ext.addObserver
+import com.hi.dhl.jdatabinding.ext.inflateMethod
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
 
@@ -27,33 +25,30 @@ class ActivityDataBindingDelegate<T : ViewBinding>(
 
     init {
         when (act) {
-            is FragmentActivity -> act.lifecycle.addObserver(LifeCalcyObserver())
-            is AppCompatActivity -> act.lifecycle.addObserver(LifeCalcyObserver())
+            is FragmentActivity -> act.lifecycle.addObserver { destroyed() }
+            is AppCompatActivity -> act.lifecycle.addObserver { destroyed() }
         }
     }
 
-    private val layoutInflater = classes.getMethod("inflate", LayoutInflater::class.java)
+    private val layoutInflater = classes.inflateMethod()
     private var viewBinding: T? = null
 
     override fun getValue(thisRef: Activity, property: KProperty<*>): T {
 
-        viewBinding?.also {
-            return it
+        return viewBinding?.run {
+            this
+
+        } ?: let {
+
+            val bind = layoutInflater.invoke(null, thisRef.layoutInflater) as T
+            thisRef.setContentView(bind.root)
+
+            bind.apply { viewBinding = this }
         }
 
-        val bind = layoutInflater.invoke(null, thisRef.layoutInflater) as T
-        thisRef.setContentView(bind.root)
-
-        return bind.also { viewBinding = it }
     }
 
-    inner class LifeCalcyObserver : LifecycleEventObserver {
-        override fun onStateChanged(source: LifecycleOwner, event: Lifecycle.Event) {
-            val state = source.lifecycle.currentState
-            if (state == Lifecycle.State.DESTROYED) {
-                viewBinding = null
-            }
-        }
-
+    private fun destroyed() {
+        viewBinding = null
     }
 }

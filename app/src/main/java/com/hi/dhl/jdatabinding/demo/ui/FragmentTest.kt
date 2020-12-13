@@ -3,7 +3,7 @@ package com.hi.dhl.jdatabinding.demo.ui
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import com.hi.dhl.jdatabinding.DataBindingFragment
+import com.hi.dhl.jdatabinding.binding
 import com.hi.dhl.jdatabinding.demo.R
 import com.hi.dhl.jdatabinding.demo.databinding.FragmentTestBinding
 import com.hi.dhl.jdatabinding.demo.ui.adapter.TestAdapter
@@ -16,7 +16,7 @@ import com.hi.dhl.jdatabinding.demo.ui.adapter.TestAdapter
  * </pre>
  */
 
-class FragmentTest(val mainViewModel: MainViewModel) : DataBindingFragment(R.layout.fragment_test) {
+class FragmentTest(val mainViewModel: MainViewModel) : Fragment(R.layout.fragment_test) {
 
     val bind: FragmentTestBinding by binding()
 

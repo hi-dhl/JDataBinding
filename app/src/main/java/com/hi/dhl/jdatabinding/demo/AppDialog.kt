@@ -1,9 +1,10 @@
 package com.hi.dhl.jdatabinding.demo
 
+import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import android.view.Window
-import com.hi.dhl.jdatabinding.DataBindingDialog
+import com.hi.dhl.jdatabinding.binding
 import com.hi.dhl.jdatabinding.demo.databinding.DialogAppBinding
 
 /**
@@ -18,8 +19,8 @@ class AppDialog(
     val title: String? = null,
     val message: String? = null,
     val yes: AppDialog.() -> Unit
-) : DataBindingDialog(context, R.style.AppDialog) {
-    private val mBinding: DialogAppBinding by binding(R.layout.dialog_app)
+) : Dialog(context, R.style.AppDialog) {
+    private val mBinding: DialogAppBinding by binding()
 
     init {
         requireNotNull(message) { "message must be not null" }
@@ -30,7 +31,6 @@ class AppDialog(
         requestWindowFeature(Window.FEATURE_NO_TITLE)
 
         mBinding.apply {
-            setContentView(root)
             display.text = message
             btnNo.setOnClickListener { dismiss() }
             btnYes.setOnClickListener { yes() }

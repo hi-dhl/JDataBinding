@@ -1,13 +1,13 @@
 package com.hi.dhl.jdatabinding
 
 import android.app.Dialog
-import android.content.Context
-import android.view.LayoutInflater
-import androidx.annotation.LayoutRes
-import androidx.annotation.NonNull
-import androidx.annotation.StyleRes
-import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.lifecycle.Lifecycle
+import androidx.viewbinding.ViewBinding
+import com.hi.dhl.jdatabinding.ext.addObserver
+import com.hi.dhl.jdatabinding.ext.inflateMethod
+import kotlin.properties.ReadOnlyProperty
+import kotlin.reflect.KProperty
 
 /**
  * <pre>
@@ -17,14 +17,36 @@ import androidx.databinding.ViewDataBinding
  * </pre>
  */
 
-abstract class DataBindingDialog(@NonNull context: Context, @StyleRes themeResId: Int) :
-    Dialog(context, themeResId) {
+inline fun <reified T : ViewDataBinding> Dialog.binding() =
+    DialogBindingDelegate(T::class.java)
 
-    protected inline fun <reified T : ViewDataBinding> binding(@LayoutRes resId: Int): Lazy<T> =
-        lazy(LazyThreadSafetyMode.NONE) {
-            requireNotNull(
-                DataBindingUtil.bind<T>(LayoutInflater.from(context).inflate(resId, null))
-            ) { "cannot find the layout file" }
+class DialogBindingDelegate<T : ViewBinding>(
+    classes: Class<T>,
+    lifecycle: Lifecycle? = null
+) : ReadOnlyProperty<Dialog, T> {
+
+    private var viewBinding: T? = null
+    private var layoutInflater = classes.inflateMethod()
+
+    init {
+        lifecycle?.addObserver { destroyed() }
+    }
+
+    override fun getValue(thisRef: Dialog, property: KProperty<*>): T {
+        return viewBinding?.run {
+            this
+
+        } ?: let {
+
+            val bind = layoutInflater.invoke(null, thisRef.layoutInflater) as T
+            thisRef.setContentView(bind.root)
+            return bind.apply { viewBinding = this }
         }
+
+    }
+
+    private fun destroyed() {
+        viewBinding = null
+    }
 
 }

@@ -1,4 +1,4 @@
-package com.hi.dhl.jdatabinding
+package com.hi.dhl.jdatabinding.ext
 
 /**
  * <pre>

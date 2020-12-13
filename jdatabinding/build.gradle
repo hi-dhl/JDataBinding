@@ -3,9 +3,7 @@ import com.hi.dhl.*
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-//apply plugin: 'com.github.dcendents.android-maven'
-//apply plugin: "com.jfrog.bintray"
-apply from: 'publish.gradle'
+
 android {
     compileSdkVersion Config.compileSdkVersion
     buildToolsVersion Config.buildToolsVersion
@@ -44,6 +42,3 @@ dependencies {
     androidTestImplementation Deps.junitExt
     androidTestImplementation Deps.espressoCore
 }
-
-
-//apply from: '../../meaven_publish.gradle'

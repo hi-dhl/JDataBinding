@@ -1,14 +1,9 @@
 package com.hi.dhl.jdatabinding
 
-import android.content.Context
-import android.view.View
-import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleEventObserver
-import androidx.lifecycle.LifecycleOwner
 import androidx.viewbinding.ViewBinding
+import com.hi.dhl.jdatabinding.ext.addObserver
+import com.hi.dhl.jdatabinding.ext.bindMethod
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
 
@@ -23,49 +18,34 @@ import kotlin.reflect.KProperty
  *     1.0.4 基于 FragmentDataBindingDelegate 实现的，处于 Lifecycle.State.DESTROYED 将会销毁数据，
  *     1.0.4 用法更加简单，请查看 README.md
  */
-abstract class DataBindingFragment(@LayoutRes contentLayoutId: Int) : Fragment(contentLayoutId) {
 
-    lateinit var mActivity: FragmentActivity
+inline fun <reified T : ViewBinding> Fragment.binding() =
+    FragmentBindingDelegate(T::class.java, this)
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        mActivity = context as FragmentActivity
+class FragmentBindingDelegate<T : ViewBinding>(
+    classes: Class<T>,
+    fragment: Fragment
+) : ReadOnlyProperty<Fragment, T> {
+
+    var viewBinding: T? = null
+    val bindView = classes.bindMethod()
+
+    init {
+        fragment.lifecycle.addObserver { destroyed() }
     }
 
-    inline fun <reified T : ViewBinding> DataBindingFragment.binding() =
-        FragmentDataBindingDelegate(T::class.java, this)
+    override fun getValue(thisRef: Fragment, property: KProperty<*>): T {
+        return viewBinding?.run {
+            return this
 
-    class FragmentDataBindingDelegate<T : ViewBinding>(
-        classes: Class<T>,
-        fragment: Fragment
-    ) : ReadOnlyProperty<Fragment, T> {
-
-        init {
-            fragment.lifecycle.addObserver(LifeCalcyObserver())
-        }
-
-        private val bindView = classes.getMethod("bind", View::class.java)
-        private var viewBinding: T? = null
-
-        override fun getValue(thisRef: Fragment, property: KProperty<*>): T {
-
-            viewBinding?.also {
-                return it
-            }
+        } ?: let {
 
             val bind = bindView.invoke(null, thisRef.view) as T
-            return bind.also { viewBinding = it }
-        }
-
-        inner class LifeCalcyObserver : LifecycleEventObserver {
-            override fun onStateChanged(source: LifecycleOwner, event: Lifecycle.Event) {
-                val state = source.lifecycle.currentState
-                if (state == Lifecycle.State.DESTROYED) {
-                    viewBinding = null
-                }
-            }
-
+            return bind.apply { viewBinding = this }
         }
     }
 
+    private fun destroyed() {
+        viewBinding = null
+    }
 }
